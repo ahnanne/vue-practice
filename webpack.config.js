@@ -21,6 +21,21 @@ module.exports = {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+      },
+      // this will apply to both plain `.css` files
+      // and `<style>` blocks in `.vue` files
+      {
+        test: /\.css$/,
+        // 적용할 loader가 2개 이상일 경우 use를 사용한다.
+        use: [
+          'vue-style-loader',
+          'css-loader',
+        ],
+      }
     ],
   },
   plugins: [
