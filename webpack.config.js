@@ -1,4 +1,5 @@
 const path = require('path');
+const { VueLoaderPlugin } = require('vue-loader');
 
 module.exports = {
   // * entry: 진입점으로서, 프로젝트가 돌아가기 위해 가장 먼저 실행될 파일
@@ -14,6 +15,15 @@ module.exports = {
     // 결과물 파일 저장 경로
     path: path.join(__dirname, 'dist'), // 확장자가 없으니 디렉토리명이 됨.
   },
-  module: {},
-  plugins: [],
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+      },
+    ],
+  },
+  plugins: [
+    new VueLoaderPlugin(),
+  ],
 };
